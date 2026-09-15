@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"strings"
 	"time"
 )
 
@@ -49,7 +48,7 @@ func SnapshotFile(opts SnapshotOptions) (Snapshot, error) {
 		return Snapshot{}, fmt.Errorf("create cache dir: %w", err)
 	}
 	createdAt := now().UTC()
-	name := strings.TrimSpace(opts.Name)
+	name := opts.Name
 	if name == "" {
 		name = filepath.Base(opts.SourcePath)
 	}
